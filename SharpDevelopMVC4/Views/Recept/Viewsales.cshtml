@@ -1,0 +1,95 @@
+﻿@model List<SharpDevelopMVC4.Models.Salesrecord>
+@{
+	ViewBag.Title = "Viewsales";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+</style>
+</head>
+
+<br>
+<br>
+<div class="row">
+<div class="col-md-12">
+
+ <form action="/Recept/Viewsales">
+
+   <br>
+<br>
+   <div class="container">  
+    <div class="row">
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="month" id="Followupdate" name="Dates" required/>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">🔍</button>
+                    </div>
+                  </div>
+                </form>
+              <br>  
+            </div>
+          </div>
+	
+      </form>
+      
+<h2>Total: <label style="color: red";>@ViewBag.TotalCount</label></h2>
+<div style=" overflow: scroll; height:500px; width:100%">
+ <table class="table table-striped table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                
+                <th>Unit</th>               
+                
+                <th>Qty</th>
+                
+                <th>Price</th>
+                
+                <th>Total</th>
+              
+                               
+            </tr>
+        </thead>
+       
+        <tbody>
+			@foreach(var product in Model)
+			{
+	            <tr>
+	              
+	                <td>@product.Id</td>
+	                <td>@product.Date</td>	               
+	                
+	                <td>@product.PName</td>     
+
+                    <td>@product.Qty</td>
+                    
+                    <td>@product.Price</td>
+                    
+                    <td>@product.Total</td>
+	            </tr>
+			}
+        </tbody>
+        
+    </table>
+   
+     </div> 
+</div>
+ <hr> 
+</div>

@@ -1,0 +1,225 @@
+﻿@{
+	ViewBag.Title = "Dashboard";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+   
+<head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+ background: white;
+  font-family: Arial, Helvetica, sans-serif;
+   
+}
+.card{
+   background-color: background: linear-gradient(45deg,#4099ff,#73b4ff);
+  border: 2px;
+margin:0px;
+padding-bottom: 30px;
+  width: 100%;
+}
+.noMargin {
+
+  margin: 0px;
+}
+.notification {
+  width: 40%;
+  margin: 8px;
+  height: 125px;
+  background: linear-gradient(to right, #493240, #f09) !important;
+    color: #fff;
+  
+  text-decoration: none;
+  padding: 20px;
+  padding-top: 40px;
+  position: relative;
+  display: inline-block;
+  border: 2px;
+ 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.notification:hover {
+  background:  red;
+  color: white;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+}
+
+.notificationone {
+  width: 40%;
+  margin: 8px;
+  height: 125px;
+  background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  padding-top: 40px;
+  position: relative;
+  display: inline-block;
+  border: 2px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.notificationone:hover {
+  background:  red;
+  color: white;
+}
+
+
+
+.notificationone .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+}
+
+
+.notificationtwo {
+  width: 40%;
+  margin: 8px;
+  height: 125px;
+ background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  padding-top: 40px;
+  position: relative;
+  display: inline-block;
+  border: 2px;
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.notificationtwo:hover {
+  background:  red;
+  color: white;
+}
+
+
+
+.notificationtwo .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+}
+
+.notificationthree {
+  width: 40%;
+  margin: 8px;
+  height: 125px;
+  background: linear-gradient(to right, #a86008, #ffba56) !important;
+    color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  padding-top: 40px;
+  position: relative;
+  display: inline-block;
+  border: 2px;
+ 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.notificationthree:hover {
+  background:  red;
+  color: white;
+}
+
+
+
+.notificationthree .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+}
+p{
+font-size: 20px;
+
+}
+.container{
+background-color: background: linear-gradient(45deg,#4099ff,#73b4ff)}
+#header {
+  background: url(https://stcatharinesanimalhospital.ca/wp-content/uploads/2018/11/shutterstock_622117586-1024x682.jpg) center center / cover no-repeat ;
+  height: 500px;
+  max-width: 100%;
+}
+</style>
+</head>
+
+
+ <div class="col-lg-12 control-section default">
+ <section id="header" class="jumbotron text-center" >
+    
+</section>
+
+
+
+ <div class="card mt-12" id"card">
+<div class="container">
+  <div class="row noMargin">
+  
+    <a href="/appointment/index" class="col notification nav-link">   
+
+    <p style="font-size:18px;">Reservation Check List</p>
+	  <span class="badge">@TempData["notify"]</span>  
+    </a>
+    
+  <a href="/Reception/index"  class="col notificationone nav-link">   
+
+
+    <p style="font-size:18px;">Current Patient's List</p>
+  <span class="badge"></span>
+   </a>  
+   
+ </div>
+  
+  
+  <div class="row noMargin">
+  
+  <a  href="/Recept/sales" class="col notificationtwo nav-link">  
+
+  <p style="font-size:18px;">Cashering</p>
+  <span class="badge"></span>
+   </a>
+    
+  <a href="/Reception/Addpatient" class="col notificationthree nav-link">  
+
+  <p style="font-size:18px;">Add Patient</p>
+  <span class="badge"></span>
+   </a>
+   
+  </div>
+</div>
+
+</div>
+</div>

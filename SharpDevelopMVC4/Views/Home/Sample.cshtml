@@ -1,0 +1,90 @@
+﻿@{
+	ViewBag.Title = "Sample";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+   
+}
+.noMargin {
+  margin: 0px;
+}
+.notification {
+  width: 40%;
+  margin: 8px;
+  height: 150px;
+  background-color: #87ceeb;
+  color: white;
+  text-decoration: none;
+  padding: 35px;
+  position: relative;
+  display: inline-block;
+  border: 2px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.notification:hover {
+  background:  red;
+  color: white;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 15px 20px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+}
+
+.
+</style>
+</head>
+
+
+ <div class="col-lg-12 control-section default">
+<h2>Menu</h2>
+<div class="container">
+  <div class="row noMargin">
+    <a href="/appointment/index" class="col notification nav-link">
+    
+  <h4>Reservation</h4>
+  <span class="badge">@TempData["notify"]</span>
+
+     
+    </a>
+    <a class="col notification nav-link">
+   
+  <h4>Inbox</h4>
+  <span class="badge"></span>
+ 
+   </a>
+   
+  </div>
+  
+  
+  <div class="row noMargin">
+    <a class="col notification nav-link">
+   
+  <h4>Inbox</h4>
+  <span class="badge"></span>
+
+    </a>
+    
+    <a class="col notification nav-link">
+  
+  <h4>Inbox</h4>
+  <span class="badge"></span>
+
+    </a>
+  </div>
+</div>
+
+</div>

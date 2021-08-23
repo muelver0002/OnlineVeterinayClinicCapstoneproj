@@ -1,0 +1,208 @@
+﻿@model SharpDevelopMVC4.Models.Payment
+@{
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<head>
+<style>
+body{
+
+ background-color:rgb(100, 100, 100);
+ 
+ }
+* {
+  box-sizing: border-box;
+}
+
+.row {
+
+  display: flex;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+#container {
+  background-color: #f2f2f2;
+  padding: 20px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+
+media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+</head>
+
+ 
+ <br>
+<br>
+<br>
+<div class="row">
+  <div class="col-75">
+    <div class="container" id="container">
+      <h2>@Model.Vetname</h2>
+           <hr/>
+       <form action="/Subsrecord/Create" method="post" class="form-horizontal">
+      
+       <div class="row">
+          <div class="col-50">
+           
+           
+           <input type="hidden" id="" name="VetId" value="@Model.VetId" >
+           <input type="hidden" id="" name="Vetname" value="@Model.Vetname" >
+            <input type="hidden" id="" name="Id" value="@ViewBag.id" >
+           
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="hidden" id="fname" name="Fullname" value="@Model.Fullname" >
+            <input type="text" id="fname" name="Fullname" value="@Model.Fullname" disabled>
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="hidden" id="email" name="Email" value="@Model.Email" >
+            <input type="text" id="email" name="Email" value="@Model.Email" disabled>
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="hidden" id="adr" name="Address" value="@Model.Address" >
+            <input type="text" id="adr" name="Address" value="@Model.Address" disabled>
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="hidden" id="city" name="City" value="@Model.City" >
+            <input type="text" id="city" name="City" value="@Model.City" disabled>
+            <div class="row">
+             
+               <div class="col-50">
+                <label for="zip">Date Avail</label>
+                <input type="hidden" id="zip" name="DateAvail" value="@Model.DateAvail" >
+                <input type="text" id="zip" name="DateAvail" value="@Model.DateAvail" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+           
+            <label for="cname">Name on Card</label>
+            <input type="hidden" id="cname" name="Cardname" value="@Model.Cardname" >
+            <input type="text" id="cname" name="Cardname" value="@Model.Cardname" disabled>
+            <label for="ccnum">Credit card number</label>
+            <input type="hidden" id="ccnum" name="Cardnum" value="@Model.Cardnum" >
+            <input type="text" id="ccnum" name="Cardnum" value="@Model.Cardnum" disabled>
+            <label for="expmonth">Exp Month</label>
+            <input type="hidden" id="expmonth" name="Datexpire" value="@Model.Datexpire" >
+            <input type="text" id="expmonth" name="Datexpire" value="@Model.Datexpire" disabled>
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="hidden" id="expyear" name="Yearexpire" value="@Model.Yearexpire" >
+                <input type="text" id="expyear" name="Yearexpire" value="@Model.Yearexpire" disabled>
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                 <input type="hidden" id="cvv" name="Cvcode" value="@Model.Cvcode" >
+                <input type="text" id="cvv" name="Cvcode" value="@Model.Cvcode" disabled>
+              </div>
+              
+               <div class="col-50">
+                <label for="cvv">Subscription</label>
+                <input type="hidden" id="" name="Subscription" value="@Model.Subscription" >
+                <input type="text" id="" name="Subscription" value="@Model.Subscription" disabled>
+              </div>
+              
+              <div class="col-50">
+                <label for="cvv">Price</label>
+                <input type="hidden" id="" name="Price" value="@Model.Price" >
+                <input type="text" id="" name="Price" value="@Model.Price" disabled>
+              </div>
+                
+           
+              <div class="col-50">
+                <label for="cvv">Due Date</label>
+                <input type="date" id="" name="Duedate" required>
+              </div>
+           
+            </div>
+          </div>
+          
+        </div>
+        
+        <input type="submit" value="Save" class="btn">
+      </form>
+    </div>
+  </div>
+  
+</div>

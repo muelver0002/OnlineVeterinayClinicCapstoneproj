@@ -1,0 +1,408 @@
+﻿@model SharpDevelopMVC4.Models.Returncheckup
+@{
+	ViewBag.Title = "Add";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css	"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
+<title>Bootstrap Datepicker Disable Past Dates Example - itsolutionstuff.com/</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+
+
+<style>
+.register{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+</style>
+</head>
+
+
+
+        
+   
+        
+        <div class="container register">
+                        <div class="row">
+                            <div class="col-md-4 register-left">
+                            
+                                           <i class='fas fa-user-md' style='font-size:180px; margin-top: 100px; margin-bottom:90px;'></i>
+                               
+                            </div>
+                            <div class="col-md-8 register-right">
+                              
+
+                                        <h3 class="register-heading">Add Patient</h3>
+                                        
+                                        
+                            <section>
+ <form action="/Returncheckup/Add" method="post">
+            	  <div class="row register-form">
+                                            <div class="col-md-6">
+            	<div class="form-group">
+                    <input class="form-control" value="@Model.CustId" type="hidden" id="" name="CustId"  />
+                </div> 
+                
+                <div class="form-group">
+                    <input class="form-control" value="@Model.Id" type="hidden" id="" name="ID"  />
+                </div> 
+                
+                <div class="form-group">
+                    <input class="form-control" value="@Model.Vetname" type="hidden" id="" name="Vetname"  />
+                </div> 
+            	
+            	
+            	<div class="form-group">
+                    <label >Full Name <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Customername" type="text" id="" name="" disabled />
+                    
+                    <input class="form-control" value="@Model.Customername" type="hidden" id="Customername" name="Customername"  />
+                </div>  
+               
+             
+
+
+                <div class="form-group">
+                    <label >Contact Number <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Number" type="number" id="" name="" disabled />
+                    <input class="form-control" value="@Model.Number" type="hidden" id="Number" name="Number" />
+                </div>
+                
+                
+                 <div class="form-group">
+                    <label >Address <label style="color:red"></label></label>
+                     <input class="form-control" value="@Model.Adrress" type="text" id="" name="" disabled />
+                   
+                    <input class="form-control" value="@Model.Adrress" type="hidden" id="Adrress" name="Adrress"  />
+                </div>
+                
+                <div class="form-group">
+                    <label >Concern <label style="color:red"></label></label>
+                   
+                    <textarea class="form-control" value="@Model.Concern" type="hidden" id="Concern" name="Concern" rows="4" cols="50" >@Model.Concern</textarea>
+                </div>
+                
+                 <div class="form-group">
+                    <label >Pet Name <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Petname" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Petname" type="hidden" id="Petname" name="Petname" />
+                </div>
+                
+                
+                 <div class="form-group">
+                    <label >Pet Type <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Pettype" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Pettype" type="hidden" id="Pettype" name="Pettype" />
+                </div>
+                
+                
+                     <div class="form-group">
+                    <label >Pet Breed <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.PetBreed" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.PetBreed" type="hidden" id="PetBreed" name="PetBreed" />
+                </div>
+                
+                <div class="form-group">
+                    <label >Pet Color <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Petcolor" type="text" id="" name="" disabled/>
+                    
+                     <input class="form-control" value="@Model.Petcolor" type="hidden" id="Petcolor" name="Petcolor" />
+                </div>
+                
+                
+                 <div class="form-group">
+                    <label >Blood Type <label style="color:red"></label></label>
+                    
+                    <input class="form-control" value="@Model.Bloodtype" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Bloodtype" type="hidden" id="Bloodtype" name="Bloodtype" />
+                </div>
+                
+                  <div class="form-group">
+                    <label >Gender <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Gender" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Gender" type="hidden" id="Gender" name="Gender" />
+                </div>
+                
+                 <div class="form-group">
+                    <label >Birth Date <label style="color:red"></label></label>
+                    
+                     <input class="form-control" value="@Model.Bdate" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Bdate" type="hidden" id="Bdate" name="Bdate" />
+                </div>
+                
+                
+                
+                
+                 <section>
+    
+                
+<div > 
+@if(ViewBag.history != null)
+{
+<h1 style="margin-top: 100px;" >Patient History</h1>
+<form action="/Returncheckup/add">  
+<div class="form-group">
+                    <input class="form-control" value="@ViewBag.Id" type="hidden" id="" name="Id"  />
+</div> 
+   <div class="container">  
+    <div class="row">
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input style="margin-bottom: 20px;"  class="form-control" type="text" name="key"  placeholder="Search Customer" aria-label="Search" aria-describedby="basic-addon2"  />
+                    <div class="input-group-append">
+                        <button style="margin-bottom: 20px;"  class="btn btn-primary" type="submit">🔍</button>
+                    </div>
+                  </div>
+                </form>
+              <br>  
+            </div>
+          </div>
+	
+      </form>
+<div style=" table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}">
+<table class="table table-striped table-dark table-hover">
+        <thead>
+            <tr>
+                
+                <th>FullName</th>               
+                <th>Concern</th>
+                <th>Complain</th>
+                <th>Diagnose</th>
+                <th>Date</th>
+                               
+            </tr>
+        </thead>
+        <tbody>
+			@foreach(var product in ViewBag.history)
+			{
+	            <tr>
+	                
+	                <td>@product.Customername</td>	               
+	                <td>@product.Concern</td>
+	                <td>@product.Complain</td>
+	                <td>@product.Diagnoselater</td>
+	                <td>@product.Datetoday</td>
+	                
+                 
+	            </tr>
+			}
+        </tbody>
+    </table>
+     </div> 
+   }
+   </div>        
+        </section>
+                
+                   </div>
+                   
+                   
+                   
+                   
+                 <div class="col-md-6">
+                
+                
+           
+               
+                
+                
+                
+                <div class="form-group">
+                    <label >Date Approve <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Datetoday" type="text" id="" name="" disabled/>
+                    
+                    
+                    <input class="form-control" value="@Model.Datetoday" type="hidden" id="Dateapprove" name="Dateapprove" />
+                </div>
+                
+                
+                <div class="form-group">
+                    <label >Pet Age<label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Petage" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Petage" type="hidden" id="Petage" name="Petage" />
+                </div>
+                
+                <div class="form-group">
+                    <label >Pet Weight <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Weight" type="text" id="" name="" disabled/>
+                    
+                    
+                     <input class="form-control" value="@Model.Weight" type="hidden" id="Weight" name="Weight" />
+                </div>
+                
+                <div class="form-group">
+                    <label >Pet Temperature <label style="color:red"></label></label>
+                    <input class="form-control" value="@Model.Temperature" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Temperature" type="hidden" id="Temperature" name="Temperature" />
+                </div>
+                
+              
+                
+                <div class="form-group">
+                    <label >Complain <label style="color:red">*</label></label>
+                    <textarea class="form-control" value="@Model.Complain" type="text" id="Complain" name="Complain" rows="4" cols="50" required>@Model.Complain</textarea>
+                </div>
+                
+               <div class="form-group">
+                    <label >Diagnose <label style="color:red">*</label></label>
+                    <textarea class="form-control" type="text" id="Diagnoselater" name="Diagnoselater" rows="4" cols="50" required></textarea>
+                </div>
+                 <hr>
+               <br>
+               
+                 <div class="form-group">                   
+                    <h3>Return CheckUp</h3>
+                    <input  class="form-control datepicker" type="text" placeholder="dd/mm/yyyy" id="Followupdate" name="Followupdate" />
+                </div>
+               <hr>
+               <br>
+               <h3>Admission Date</h3>
+                <div class="form-group">
+                    <label style="" >Date Start</label>
+                    <input  class="form-control datepicker" type="text" placeholder="dd/mm/yyyy" id="" name="DateStart" />
+                </div>
+                
+                 <div class="form-group">
+                    <label style="" >Date End</label>
+                    <input  class="form-control datepicker" type="text" placeholder="dd/mm/yyyy" id="" name="DateEnd" />
+                </div>
+               
+                <div class="form-group">
+                    <button type="submit"  class="btn btn-primary btn-block text-uppercase">Save</button>
+
+
+                </div>			               
+            </form>
+          </div>  
+            
+</div>
+ <div class="col-md-4">
+  
+    </div>
+
+
+<script type="text/javascript">
+   
+    $('.datepicker').datepicker({ 
+        startDate: new Date()
+    });
+  
+</script>
+</div>
+</div>

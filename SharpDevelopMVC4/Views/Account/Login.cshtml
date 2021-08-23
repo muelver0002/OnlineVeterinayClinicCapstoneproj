@@ -1,0 +1,150 @@
+﻿@{
+	ViewBag.Title = "Login";
+}
+
+
+
+
+<div class="row">
+    <div class="col-sm-9 col-md-6 col-lg-3 mx-auto">
+
+    
+        <section>
+        
+            <form id="account" method="post">
+            	@Html.AntiForgeryToken()                
+                
+                @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+                {                   
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					  @Html.ValidationSummary(true)
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					  </button>
+					</div>                    
+				}
+				
+				
+				    <h2 class="card-title text-center" style="font-size: 50px; margin-top: 30px; margin-bottom: 50px; color: blue; font-weight: bold; font-family:Copperplate">LOGIN</h2>
+
+                <div class="form-group ">
+                    <label style="font-family:Lucida Console;" for="Input_Email">Username</label>
+
+
+                    <input class="form-control" type="text" id="username" name="username" />
+                </div>
+                
+                
+                
+                <div class="form-group">
+                
+                    <label   style="font-family:Lucida Console;" for="password">Password</label>
+
+
+                    <input class="form-control" type="password" id="myInput" name="password" />
+                </div>
+                
+                <div class="form-group">
+                  <div class="checkbox">
+                         <label for="see">
+                            <input type="checkbox" id="see" onclick="myFunction()">
+                            Show Password
+                        </label>
+                    <div class="checkbox">
+                        <label for="rememberme">
+                            <input type="checkbox" id="rememberme" name="rememberme" />
+                            Remember me?
+                        </label>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                <button style="margin-bottom: 30px; border-radius: 2rem;" onclick="this.form.submit(); this.disabled = true;" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                
+
+                </div>
+               
+ 				 <div class="form-group">
+ 				  <hr class="my-4">
+ 				
+                
+                <a href="/account/register" style="border-radius: 2rem;" class="btn btn-lg btn-danger btn-block text-uppercase">Register Account</a>
+                 <a href="/crudsample/create"  style="border-radius: 2rem;" class="btn btn-lg btn-warning btn-block text-uppercase">Register Clinic</a>
+                
+             
+                </div>	
+                
+            </form>
+            
+        </section>
+    </div>
+
+
+</div>
+<script>
+function myFunction() {
+
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  }
+  else {
+    x.type = "password";
+  }
+}
+</script>
+
+ @if(TempData["register"] != null)
+    {
+    
+    <script>    
+      function func(nam) {
+        alert(nam);
+    }
+    </script>
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Successfully Registerd..') </script>    
+    }
+    
+     @if(TempData["ownersucces"] != null)
+    {
+    
+    <script>    
+      function func(nam) {
+        alert(nam);
+    }
+    </script>
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Registerd Successfully ..') </script>
+    
+    
+    }
+    
+  <!--for vetowner-->
+  @if(TempData["success"] != null)
+    {
+    
+    <script>    
+      function func(nam) {
+        alert(nam);
+    }
+    </script>
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Registered Successfully..') </script>    
+    }
+    
+     @if(TempData["mgsAlert"] != null)
+    {
+    
+    <script>    
+    function func(nam) {
+        alert(nam);
+    }
+    </script>
+    
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Password successfuly changed.') 
+	</script>   
+
+}

@@ -1,0 +1,275 @@
+﻿@model SharpDevelopMVC4.Models.Appointment
+@{
+	ViewBag.Title = "Reception";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+ @if (Request.IsAuthenticated)
+     {
+      if(User.IsInRole("recept"))
+	  {
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css	"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
+
+
+<style>
+.register{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+</style>
+</head>
+
+
+
+        
+   
+        
+        <div class="container register">
+                        <div class="row">
+                            <div class="col-md-4 register-left">
+                <i class='fas fa-user-nurse' style='font-size:180px; margin-top: 100px; margin-bottom:90px;'></i>
+                               
+                            </div>
+                            <div class="col-md-8 register-right">
+                              
+
+                                        <h3 class="register-heading">Add Patient</h3>
+                                        
+                                        
+                            <section>
+        
+            <form action="/Reception/add" method="post">
+            	 	 <div class="row register-form">
+                                            <div class="col-md-6">
+            	 <div class="form-group">
+                    <input class="form-control" value="@Model.CustId"  type="hidden" id="" name="CustId" required />
+                </div>  
+            	 
+            	 <div class="form-group">                
+                    <input class="form-control" value="@Model.Id" type="hidden" id="" name="ID" required />
+                </div>  
+            	 
+            	 <div class="form-group">
+                    <label >Full Name</label>
+                    <input class="form-control" value="@Model.Customername" type="text" id="" name="" disabled />
+                    
+                    <input class="form-control" value="@Model.Customername" type="hidden" id="Customername" name="Customername"  />
+                </div>  
+               
+             
+
+
+                <div class="form-group">
+                    <label >Contact Number</label>
+                    <input class="form-control" value="@Model.Number" type="number" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Number" type="hidden" id="Number" name="Number" />
+                </div>
+                
+                
+                 <div class="form-group">
+                    <label >Address</label>
+                    <input class="form-control" value="@Model.Address" type="text" id="" name=""  disabled/>
+                    
+                    <input class="form-control" value="@Model.Address" type="hidden" id="Adrress" name="Adrress"  />
+                </div>
+                
+                <div class="form-group">
+                    <label >Concern</label>
+                    <textarea class="form-control" value="@Model.Concern" type="text" id="Concern" name="Concern" rows="4" cols="50" required>@Model.Concern</textarea>
+                </div>
+                
+                 <div class="form-group">
+                    <label >Pet Name</label>
+                     <input class="form-control" value="@Model.PetName" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.PetName" type="hidden" id="Petname" name="Petname" />
+                </div>
+                
+                
+                 <div class="form-group">
+                    <label >Pet Type</label>
+                    
+                    <input class="form-control" value="@Model.Type" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Type" type="hidden" id="Pettype" name="Pettype" required/>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label >Pet Breed</label>
+                     <input class="form-control" value="@Model.Breed" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Breed" type="hidden" id="PetBreed" name="PetBreed" />
+                </div>
+                
+                <div class="form-group">
+                    <label >Pet Color</label>
+                     <input class="form-control" value="@Model.Color" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Color" type="hidden" id="Petcolor" name="Petcolor" />
+                </div>
+                 </div>
+                
+                   <div class="col-md-6">
+                
+                 <div class="form-group">
+                    <label >Blood Type </label>
+                    <input class="form-control" value="@Model.Bloodtype" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Bloodtype" type="hidden" id="Bloodtype" name="Bloodtype" />
+                </div>
+                
+                 <div class="form-group">
+                    <label >Gender</label>
+                    <input class="form-control" value="@Model.Gender" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Gender" type="hidden" id="Gender" name="Gender" />
+                </div>
+                
+                 <div class="form-group">
+                    <label >Birth Date</label>
+                    <input class="form-control" value="@Model.Bdate" type="text" id="" name="" disabled/>
+                    
+                    <input class="form-control" value="@Model.Bdate" type="hidden" id="Bdate" name="Bdate" />
+                </div>
+                
+                
+                <div class="form-group">
+                    <label >Pet Age</label>
+                    <input class="form-control" type="number" id="Petage" name="Petage" required/>
+                </div>
+                
+                <div class="form-group">
+                    <label >Pet Weight</label>
+                    <input class="form-control" type="number" id="Weight" name="Weight" required/>
+                </div>
+                
+                <div class="form-group">
+                    <label >Pet Temperature</label>
+                    <input class="form-control" type="number" id="Temperature" name="Temperature" required/>
+                </div>
+                
+              
+                
+                 <div class="form-group">
+                    <label >Complain</label>
+                    <textarea class="form-control" type="text" id="Complain" name="Complain" rows="4" cols="50" required></textarea>
+                </div>
+               
+               
+               
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block text-uppercase" >Send</button>
+           		</div>
+               	</div>	               
+            </form>
+            
+        </section>
+    </div>
+
+    </div>
+</div>
+
+
+
+    
+
+   }
+ }

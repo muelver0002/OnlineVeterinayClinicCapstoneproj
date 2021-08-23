@@ -1,0 +1,45 @@
+﻿@model List<SharpDevelopMVC4.Models.Diagnoserecord>
+@{
+	ViewBag.Title = "ReturnCheckUp";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <head>
+    
+    <style>
+    body {
+background-color: gray;
+}
+    </style>
+  </head>
+
+ <div class="col-lg-12">
+ <h2 style="margin-bottom: 40px;margin-top: 40px;font-size: 40px;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;">My Return Check Up List</h2>
+@foreach(var product in Model)
+{
+        <div class="card mt-4"style=" background: linear-gradient(to right, #493240, #f09) !important;">
+          
+          <div class="card-body">
+            <h3 style="margin-bottom: 20px;margin-top: 40px;font-size: 20px;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;" class="card-title">@product.Vetname</h3>
+             <hr>
+             <p class="card-title" style="font-size: 18px;font-weight: bold;">Return CheckUp: @product.Followupdate</p>
+            <p class="card-text"><a style="color:; font-size: 18px; ">Doctor</a>: @product.DocName</p>
+            <p class="card-text"><a style="color:; font-size: 18px; ">Concern</a>: @product.Concern</p>
+            <p class="card-text"><a style="color:; font-size: 18px; ">Pet name</a>: @product.Petname</p>
+           
+            <p class="card-text"><a style="color:; font-size: 18px; ">Complain</a>: @product.Complain</p>
+            <p class="card-text"><a style="color:; font-size: 18px; ">Diagnose</a>: @product.Diagnoselater</p>
+           
+           <hr>
+
+          </div>
+        </div>
+        
+}        
+   </div>

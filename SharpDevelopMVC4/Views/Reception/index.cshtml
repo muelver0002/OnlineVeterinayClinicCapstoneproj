@@ -1,0 +1,131 @@
+﻿@model List<SharpDevelopMVC4.Models.Patient>
+@{
+	ViewBag.Title = "Patient";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+</style>
+</head>
+
+ @if (Request.IsAuthenticated)
+     {
+    <div class="table-responsive">
+ <h1 style="margin-bottom: 40px;margin-top: 40px;    margin-bottom:  40px;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;">Patient's Lists</h1>
+ <table class="table table-striped table-dark table-hover">
+        <thead>
+            <tr>
+               
+
+                <th> CustomerName</th>
+                <th> Address</th>
+                <th> Number</th>
+              
+                
+               
+                <th> Petname</th>
+               
+               
+                
+                <th>Concern</th>
+                
+              
+                <th> Date</th>
+               
+                
+              @if(User.IsInRole("doctor"))
+               {
+                <th>Action</th>
+               }   
+                
+                 
+            </tr>
+        </thead>
+        <tbody>
+			@foreach(var product in Model)
+			{
+	            <tr>
+	                   
+
+	                <td>@product.Customername</td>
+	                <td>@product.Adrress</td>
+	                <td>@product.Number</td>
+	                
+	                
+	                
+	                <td>@product.Petname</td>
+	                <td>@product.Concern</td>
+	                
+	                
+	               
+	                <td>@product.Datetoday</td>
+	                
+	               
+	               
+	                
+	              @if(User.IsInRole("doctor"))
+                   {
+	                <td><a href="/Diagnose/Add/@product.Id" class="btn btn-primary btn-block text-uppercase">Diagnose</a></td>
+	               } 
+
+	               
+	            </tr>
+			}
+        </tbody>
+    </table>
+    
+  </div>
+    
+
+    
+    if(TempData["addpatient"] != null)
+    {
+    
+        <script>    
+    function func(nam) {
+        alert(nam);
+    }
+    </script>
+		<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+		<script>func('Added Successfuly..') </script>
+    
+    
+    }
+    
+     if(TempData["addmessage"] != null)
+    {
+    
+        <script>    
+    function func(nam) {
+        alert(nam);
+    }
+    </script>
+		<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+		<script>func('Added Successfuly..') </script>
+    
+    
+    }
+    
+    }

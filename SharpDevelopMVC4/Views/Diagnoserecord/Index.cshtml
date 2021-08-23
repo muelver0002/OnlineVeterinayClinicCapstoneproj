@@ -1,0 +1,118 @@
+﻿@model List<SharpDevelopMVC4.Models.Diagnoserecord>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 100%; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+h1{
+	color: black;
+}
+body{
+color:white;
+}
+p{
+color:white
+ </head>
+</style>
+
+ @if (Request.IsAuthenticated)
+     {
+     
+     
+
+ 
+  <div class="table-responsive">
+ <h1 style="margin-bottom: 40px;margin-top: 40px;    margin-bottom:  40px;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;">Patient History List</h1>
+   
+  <form action="/Diagnoserecord/Index">
+
+   
+   <div class="container">  
+    <div class="row">
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="Searchkey"  placeholder="Search Patient" aria-label="Search" aria-describedby="basic-addon2"  />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">🔍</button>
+                    </div>
+                  </div>
+                </form>
+              <br>  
+            </div>
+          </div>
+	
+      </form>
+@foreach(var product in Model)
+{
+
+
+        <div class="card mt-4" style=" background: linear-gradient(to right, #493240, #f09) !important;">
+          
+          <div class="card-body">
+    <div class="row">   
+     <div class="column" style=""> 
+            <h3  style="margin-bottom: 40px;margin-top: 10px;font-size: 40px;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;" class="card-title">Customer info</h3>  
+            <p class="card-text"><a style="color:red">Customer Name</a>: @product.Customername</p>            
+            <p class="card-text"><a style="color:red">Doctor</a>: @product.DocName</p>
+            <p class="card-text"><a style="color:red">Concern</a>: @product.Concern</p>
+            <p class="card-text"><a style="color:red">Pet name</a>: @product.Petname</p>
+            <p class="card-text"><a style="color:red">Date</a>: @product.Datetoday</p>
+            <p class="card-text"><a style="color:red">Complain</a>: @product.Complain</p>
+            <p class="card-text"><a style="color:red">Diagnose</a>: @product.Diagnoselater</p>
+            
+           
+          </div>
+      <div class="column" style=""> 
+            <h3   style="margin-bottom: 40px;margin-top: 10px;font-size: 40px;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;" class="card-title">Admission Date</h3>
+            <p class="card-text"><a style="color:red">Date Start:</a> @product.DateStart</p>
+            <p class="card-text"><a style="color:red">Date End:  </a>  @product.DateEnd</p>
+      </div>        
+        </div>
+       </div>
+      </div>
+}        
+   </div>
+    
+    }

@@ -1,0 +1,77 @@
+﻿@model List<SharpDevelopMVC4.Models.Appointment>
+@{
+	ViewBag.Title = "Appointmnet";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+h2{
+	color: black;
+	
+}
+body{
+color:white;
+}
+p{
+color:white
+</style>
+<div class="col-lg-12">
+<h2 style="margin-bottom: 40px;margin-top: 40px;    margin-bottom:  40px;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;">Appointment List</h2>
+@foreach(var product in Model)
+			{
+
+
+    <div class="card mt-4" style=" background: linear-gradient(to right, #493240, #f09) !important;">
+
+          <div class="card-body">
+            <h3 class="card-title">@product.Vetname</h3>
+            <h4>Concern:@product.Concern</h4>        	
+            <p class="card-text"><a style="">Date</a>: @product.Dayofappointment</p>
+            <p class="card-text"><a style="color:red">Status</a>: @product.Status</p>
+           <!-- <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            4.0 stars -->
+           @if(@product.Status == "Approved")
+           {
+           <div class="row">                 
+           <div style="margin-left: 20px; ">
+           <button type="" class="btn btn-warning btn-sm" disabled>Cancel Appoinment</button>
+           <a href="/Appointment/Delete/@product.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash" style='font-size:18px'></i></a>
+           </div>
+           </div>
+           }
+           @if(@product.Status != "Approved")
+           {
+           <div class="row">                 
+           <div style="margin-left: 20px; ">
+           <a href="/Appointment/Cancel/@product.Id" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure to Cancel your appointment?')">Cancel Appoinment</a>
+           </div>
+           </div>
+           }
+          </div>
+        </div>
+        
+    
+    
+    }
+    </div>
+    
+   @if(TempData["deletemsg"] != null)
+    {
+    
+    <script>    
+    function func(nam) {
+        alert(nam);
+    }
+    </script>
+    
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('@TempData["deletemsg"]') 
+	</script>   
+    }
+    
+    
+    

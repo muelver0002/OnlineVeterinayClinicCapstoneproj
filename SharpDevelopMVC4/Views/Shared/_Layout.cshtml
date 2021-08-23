@@ -1,0 +1,351 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+ <style>
+
+ </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <title>@ViewBag.Title - CAPSTONE2</title>
+	  <meta name="Name" content="@ViewBag.Title - My ASP.NET Application" />
+	  <meta name="Description" content="Site Description" />
+	  <meta property="og:title" content="@ViewBag.Title - My ASP.NET Application" />
+	  <meta property="og:description" content="Site Description" /> 
+	  
+    @if (TempData["msgAlert"] != null)
+    {
+        <script>
+            alert('@TempData["msgAlert"]')
+        </script>
+    }	  
+
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Content/Site.css" />
+    <link rel="stylesheet" href="/Content/log.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    @RenderSection("head", required: false)    
+</head>
+<body>
+
+
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+    
+    
+      @if (Request.IsAuthenticated)
+          {
+	         
+		  <div id="mySidenav" class="sidenav">
+		   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		   <br>
+		   <a  href=""><i id="icon"class="fa fa-user-circle-o" 
+		   style="font-size:48px;color:white;
+		   display: flex; align-content: center;
+		   margin-left: 65px;"></i></a>
+		   
+		  
+		   <p style="  
+			  text-decoration: none;
+			  font-size: 25px;
+			  color:white;
+			  display: block;
+			  transition: 0.3s;text-align: center;">@User.Identity.Name</p>
+              <hr/>		   
+		    
+			@if(User.IsInRole("owner"))
+            {
+                      <a  href="/crudsample/index">View Clinics</a>
+                      
+                      <a href="/animals/index">View Animals</a>
+	              	           
+	              	  <a href="/product/index" >View Products</a>
+	              	           
+	              	  <a href="/services/index"> View Services</a>
+	              	  
+	              	   <a href="/medicine/index"> View Medicines</a>
+	              	   
+	              	  <a href="/Diagnoserecord/index" >Patient History</a>
+	              	  
+                      <a href="/appointment/index" >View Reservation</a>
+                      
+                      <a href="/Reception/index" >Patients</a>
+                                 
+		              <a  href="/Receptionist/Index">ReceptionInfo</a>
+		            
+		              <a  href="/Doctor/Index">DoctorInfo</a>
+		              
+		              <a  href="/Recept/Viewsales">Sales Record</a>	  
+		              
+                      <a  href="/Payment/Index">My Billing</a>	  		              
+            } 	
+				
+				
+				
+            @if(User.IsInRole("customer"))
+            
+            {
+             <a class="nav-link"  href="/Home/Menu"><i style="font-size:24px" class="fa">&#xf0c9;</i> Menu</a>
+             <a class="nav-link" href="/pet/index" ><i style='font-size:24px' class='fas'>&#xf1b0;</i> MyPets</a>
+             <a href="/Diagnoserecord/Viewhistory" ><i class="fa fa-history fa_custom"></i> History</a>             
+            <!--
+             <a  href="/crudsample/index">View Clinics</a>
+                 
+             <a href="/appointment/Appointmnet" >Appointments</a>
+             
+            
+             
+              <a href="/Diagnoserecord/ReturnCheckUp" >Return CheckUp</a>
+             -->
+             
+            
+            }   
+
+
+             @if(User.IsInRole("recept"))
+            {  
+            
+               <a class="nav-link" href="/Home/Dashboard" ><i style="font-size:24px" class="fa">&#xf0c9;</i> Menu</a>
+               
+           <!--   <a href="/appointment/index" >Reservation</a> -->
+              
+             <!--    <a href="/Reception/index" >Patients</a> -->
+              
+               <!--  <a href="/Recept/sales" >Cashier</a> -->
+            }
+           
+            @if(User.IsInRole("cashier"))
+            {  
+                          
+             <a href="/Recept/sales" ><i style='font-size:24px' class='fas'>&#xf1b0;</i> Cashier</a>
+               
+             <!--   <a href="/appointment/index" >Reservation</a> -->
+              
+             <!--    <a href="/Reception/index" >Patients</a> -->
+              
+             <!-- <a class="nav-link" href="/Home/Dashboard" ><i style="font-size:24px" class="fa">&#xf0c9;</i> Menu</a>  -->
+            }           
+            
+            
+             @if(User.IsInRole("doctor"))
+            {
+               <a class="nav-link" href="/Home/Docmenu" ><i style="font-size:24px" class="fa">&#xf0c9;</i> Menu</a>
+               <!--<a href="/Reception/index" >View Patients</a>
+               
+               <a href="/Diagnoserecord/index" >Patient History</a>
+               <a href="/Returncheckup/index" >Returncheckup</a>-->
+            
+            }  
+
+
+
+
+
+
+					   
+			 @if(User.IsInRole("admin"))
+			 {
+             <a  href="/crudsample/index"><i style="font-size:24px" class="fa">&#xf1b0;</i> View Clinic</a>			
+			
+             <a  href="/crudsample/manage"><i style="font-size:24px" class="fa">&#xf0ad;</i> Manage Vets</a>
+	         <a  href="/Account/AdminReg"><i style="font-size:24px" class="fa">&#xf234;</i> New Admin</a>
+	         <a  href="/crudsample/Admins"><i style="font-size:24px" class="fa">&#xf0c0;</i> Users</a>
+	         <a  href="/crudsample/ManageCustom"><i style="font-size:24px" class="fa">&#xf0c0;</i> Customer</a>
+	         <a  href="/crudsample/Viewpet"><i style="font-size:24px" class="fa">&#xf1b0;</i> View Pets</a>
+	         <a  href="/crudsample/VetOwner"><i style="font-size:24px" class="fa">&#xf1b0;</i> Vet Owner</a>
+	         
+	         <a href="/Address/Index"><i style="font-size:24px" class="fa">&#xf1b0;</i> View Barangay </a>
+	         <hr/>	
+	         <a href="/Subsrecord/Index"> Approved Billing </a>
+	         <a href="/Subsrecord/Duedate"> Due Date </a>
+	         
+	         <a  href="/crudsample/Payment">Client Billing</a>
+	               
+		      }
+					   
+			    
+			    <a class="nav-link" href="/" ><i class="fa  fa-home"></i> Home</a>
+			  
+				<a class="nav-link" href="/Home/About" ><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+			  
+			  
+				<a class="nav-link" href="/Home/Contact" ><i style="font-size:24px" class="fa">&#xf095;</i> Contact</a>
+
+			    </div>
+					
+				 <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776;</span>
+					  
+			     <script>
+			     function openNav() {
+				 document.getElementById("mySidenav").style.width = "250px";
+				}
+					
+					function closeNav() {
+					  document.getElementById("mySidenav").style.width = "0";
+					}
+					</script>
+	         
+	         
+	          
+          }
+          
+          
+          @if (!Request.IsAuthenticated)
+        {
+	      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	       <i style="font-size:24px" class="fa">&#xf1b0;</i>
+	      </button>
+       } 
+          
+          
+          
+     
+        @if (Request.IsAuthenticated)
+        {
+	      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	       <i style="font-size:24px" class="fa">&#xf1b0;</i>
+	      </button>
+	       }
+	      <div class="collapse navbar-collapse" id="navbarResponsive">
+	        <ul class="navbar-nav ml-auto " >
+          
+          
+          
+     
+          
+          
+          @if (Request.IsAuthenticated)
+          {
+	           <li class="nav-item dropdown">
+	           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	           Hello, @User.Identity.Name!
+	           </a>
+	           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+            	  
+             	  @if(User.IsInRole("admin")) 
+            	  {
+            	       <a class="dropdown-item" href="#"> My Account</a>
+            	      <a  class="dropdown-item" href="/address/add" >+ Barangay</a>
+            	      <a  class="dropdown-item" href="/Subscription/Createsub" >+ Subscription</a>
+            	       <a class="dropdown-item" href="/Home/Forgotpass" >Forgot Password</a>            
+            	      
+            	  }
+            	   
+            	  @if(User.IsInRole("customer"))
+                  {
+                   <a class="dropdown-item" href="/Account/CustomerInfo"><i class='far fa-user-circle' style='font-size:18px'> </i> My Account</a>
+                   <a  class="dropdown-item" href="/pet/create" >+ Pet</a>
+
+                  
+                  
+                  }            	  
+            	   
+	              @if(User.IsInRole("owner"))	              
+	              { 
+                	              
+	             <a class="dropdown-item" href="/crudsample/myinfo"><i class='far fa-user-circle' style='font-size:18px'> </i> Account</a>    
+		         <a class="dropdown-item" href="/animals/create" >+ Animals </a>
+	                      
+	             <a class="dropdown-item" href="/product/create" >+ Add Product</a>
+	           
+	             <a class="dropdown-item" href="/services/create" >+ Add Services</a>
+	             
+	             <a class="dropdown-item" href="/medicine/addmed" >+ Add Medicine</a>
+	             
+	             <a class="dropdown-item" href="/Receptionist/Register" >+ Receptionist</a>
+	             
+	             <a class="dropdown-item" href="/Doctor/Register" >+ Doctor</a>
+	              
+	             <!--<a  class="dropdown-item" href="/Account/ChangePassword" >Change Password</a>-->                   
+	                  
+	              
+	              	  
+                               	              	                                          
+	              }  
+
+                  @if(User.IsInRole("recept"))
+                  {
+                  
+                   <a class="dropdown-item" href="/Reception/Addpatient" >+ Patient</a>
+                  
+                  }
+                  
+                  
+                   @if(User.IsInRole("doctor"))
+                  {
+                  
+                    
+                    <a href="/Diagnose/index" class="dropdown-item">+ Patient Prescription</a>
+                  
+                  
+                  }
+	           <a class="dropdown-item" href="/Account/Logoff"><i style="font-size:18px" class="fa">&#xf08b;</i> Log Out</a>	             
+	           </div>
+	           </li>
+	          
+          }
+          else
+          {
+  	         
+	           <li class="nav-item">
+            <a class="nav-link"  href="/">Home</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link"  href="/Home/About">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="/Home/Contact">Contact</a>
+          </li>
+           <li class="nav-item">
+	            <a class="nav-link" href="/Account/Login">Login</a>
+	          </li>
+          }
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+         
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+       
+          <footer class="footer text-center section">
+    <div class="container">
+      <div class="row">
+
+      
+    </div>
+  </footer>
+    </div>
+   
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/bootstrap.bundle.min.js"></script>
+    
+    @RenderSection("scripts", required: false)
+    
+    @* This is to remove the overlay ad in Somee.com *@
+    <script>
+        $(document).ready(function () {
+            $('#nextAll').nextAll().remove();
+        });
+    </script>
+    <hr id="nextAll" style="display:none;" />
+    
+</body>
+</html>

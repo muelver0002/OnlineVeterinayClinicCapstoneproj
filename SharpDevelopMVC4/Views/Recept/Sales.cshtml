@@ -1,0 +1,203 @@
+﻿@model List<SharpDevelopMVC4.Models.Recept>
+@{
+	ViewBag.Title = "Sales";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ <head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+</style>
+</head>
+<br>
+<br>
+<div class="row">
+<div class="col-md-6">
+ <form action="/Recept/Sales">
+
+   
+   <div class="container">  
+    <div class="row">
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="Searchkey"  placeholder="Search Customer" aria-label="Search" aria-describedby="basic-addon2" required />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">🔍</button>
+                    </div>
+                  </div>
+                </form>
+              <br>  
+            </div>
+          </div>
+	
+      </form>
+<h2>Total: <label style="color: red";>@ViewBag.TotalCount</label></h2>
+<div style=" overflow: scroll; height: 500px; width: 500px">
+ <table class="table table-striped table-dark table-hover">
+        <thead>
+            <tr>
+               <th>Id</th>
+              <th>Unit</th>
+                <th>Price</th>
+                <th>Qty/Days</th>
+                <th>SubTotal</th>
+                @if(string.IsNullOrEmpty(@ViewBag.cusname))
+                {
+                 <th>Action</th>
+                 
+                 } 
+                 
+            </tr>
+        </thead>
+        <tbody>
+     
+			@foreach(var product in Model)
+			{
+	            <tr>         
+                             
+	               	<td>@product.Id</td>               	               
+	                <td>@product.PName</td>
+	                <td>@product.Price</td>
+	                <td>@product.Qty</td>
+	                <td>@product.Total</td> 
+                    @if(string.IsNullOrEmpty(@ViewBag.cusname))
+                    {
+                    <td><a href="/Recept/Delete/@product.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="fa fa-trash" style='font-size:20px'></i></a></td>	                
+	                }	                
+	            </tr>
+			
+			}
+        </tbody>
+    </table>
+    </div>
+    
+    </div>
+    
+   <div class="col-md-6" style="border: 7px solid black; padding: 30px;  background: linear-gradient(to right, #a86008, #ffba56) !important;  ">
+      
+       <h2>CASHIER</h2>   
+        <hr> 
+    <form action="/Recept/Sales" method="post">    
+       <div class="row">
+           
+            <br>
+           <div style=" float: left; ">
+                <div class="form-group">				   
+				   <select  name="medicineId" class="form-control" required>
+				   <option value="0">-Select Medicine-</option>
+				  
+				     @foreach(var pro in ViewBag.MedList)
+				   {
+				    <option value="@pro.Id">@pro.Name</option>
+				   }
+				     
+				   </select>				  
+				 </div>
+			 </div>
+             <div  style="margin-left: 10px; ">   
+             <div class="form-group">             
+				  <input class="form-control" style="font-size: 15px;  text-align: center"  min="1" max="" Placeholder="Qty"  type="number" id="" name="qty1"  />
+			 </div>  
+             </div>  			 
+		     </div>
+                
+          <div class="row">         
+         
+           <div style=" float: left; ">
+                <div class="form-group">				   
+				   <select  name="productId" class="form-control" required>
+				   <option value="0">-Select Product -</option>
+				  
+				      @foreach(var product in ViewBag.prod)
+					   {
+					    <option value="@product.Id">@product.Productname</option>
+					   }  
+				     
+				   </select>				  
+				 </div>
+			 </div>
+             <div  style="margin-left: 10px; ">   
+             <div class="form-group">             
+				  <input class="form-control" style="font-size: 15px;  text-align: center"  min="1" max="" Placeholder="Qty"  type="number" id="" name="qty2"  />
+			 </div>  
+             </div>  			 
+		     </div>
+             
+             <div class="row">
+             
+             <div style=" float: left; ">
+             <div class="form-group">
+			   <select name="serviceId" class="form-control" >
+				   <option value="0">-Select Services-</option>				  
+				    @foreach(var cat in ViewBag.Servicelist)
+					   {
+					    <option value="@cat.Id">@cat.Servicesname</option>
+					   }  	     
+				</select>				  
+			</div>
+			</div>	
+			
+			<div  style="margin-left: 10px; ">   
+            <div class="form-group">             
+				   <button style="font-size: 18px; height: 40px; width: 200px " type="submit" class="btn btn-primary" >ADD</button>
+			</div>  
+            </div>  
+			
+		   </div>
+		   
+    </form>
+		   <hr>
+		   <br>
+		  
+		   <form action="/Recept/Pay">
+		   <div class="row">
+		    
+		    <div style=" float: left; ">
+		       <!--Customer Name -->
+		       <input class="form-control" value="@ViewBag.cusname"  type="hidden" id="" name="Cusname"/>
+		    
+                <div class="form-group">				   
+				   <input class="form-control" style=" font-size: 20px; height: 50px; width: 200px; color: red; text-align: center" min="1" Placeholder="TOTAL" value="@ViewBag.TotalCount" type="number" id="" name="total"  required/>				  
+				 </div>
+				 
+			 </div>
+			 
+             <div  style="float: left; margin-left: 30px; ">   
+               <div class="form-group">             
+				  <h3>CHANGE: <label style="color: red">@ViewBag.change</label></h3>
+			   </div>  
+             </div>  
+             
+		     </div>
+		     <br>
+		     
+		     <div class="row">
+		      <div class="form-group"> 
+		     <input class="form-control" style="font-size: 20px; height: 50px; width: 200px;  text-align: center" min="1" Placeholder="BAYAD" type="number" id="" name="change"  required/>		
+		     </div>
+		     </div>
+		     
+		     <div class="row">
+		     <div class="form-group">
+               <button style="font-size: 20px; height: 50px; width: 200px" type="submit" class="btn btn-primary">PAY</button>
+               <a href="/Recept/Remove" class="btn btn-danger" style="font-size: 20px; height: 50px; width: 200px" onclick="return confirm('Clear fields?')">CLEAR</a>
+            </div>
+            </div>
+		      
+		    </div>
+		    </form> 
+		   
+      </div>
+   </div>

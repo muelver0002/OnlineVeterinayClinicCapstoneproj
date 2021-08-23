@@ -1,0 +1,270 @@
+﻿@model SharpDevelopMVC4.Models.Product
+
+@{
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+	 <head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css	"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
+  
+  <title>Bootstrap Datepicker Disable Past Dates Example - itsolutionstuff.com/</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+
+
+
+<style>
+.register{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+</style>
+</head>
+
+
+        
+        <div class="container register">
+                        <div class="row">
+                            <div class="col-md-4 register-left">
+                            
+                                                                 <i class='fas fa-clinic-medical' style='font-size:180px; margin-top: 100px; margin-bottom:90px;'></i>
+                               
+                            </div>
+                            <div class="col-md-8 register-right">
+                              
+
+                                        <h3 class="register-heading">Create Appointment</h3>
+                                        
+                                        
+                            <section>
+        
+<form action="/crudsample/Create" method="post" enctype="multipart/form-data" class="form-horizontal">    
+ <div class="row register-form">
+                                            <div class="col-md-6">
+    	@Html.AntiForgeryToken()
+    	
+        <fieldset>
+            
+            @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+            {                   
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				  @Html.ValidationSummary(true)
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>                    
+			}
+           
+            <!-- Text input-->
+            <div class="form-group">
+                <label >Veterinary Name</label>
+             
+                    <input type="text" id="Name" name="Name" value="@Model.Name" class="form-control input-md" required>
+                
+            </div>            
+
+
+            
+
+            <div class="form-group">
+                <label  >Address </label>
+                     <input class="form-control input-md" type="text" name="Address" value="" placeholder="Brgy" list="cityname" aria-label="Search" aria-describedby="basic-addon2" required/>
+					    <datalist id="cityname">
+					      @foreach(var barangay in  ViewBag.Address)
+						   {
+						    <option value="@barangay.Addname"></option>
+						   } 
+					    </datalist>
+                    <input type="text" id="" name="AddCity" value="" placeholder="City" class="form-control input-md" required>
+               
+            </div>
+            
+
+            <div class="form-group">
+                <label >Contact Info </label>
+                
+                    <input type="number" id="Unit" name="contactInfo" value="" class="form-control input-md">
+             
+            </div>
+            
+            
+             <div class="form-group">
+                <label for="">Time Schedule</label>
+                
+                    <input type="text" id="Unit" placeholder="Mon-Sunday(8:30am-7:30pm)" name="Unit" value="" class="form-control input-md">
+               
+            </div>
+    
+
+			<!-- File Upload -->
+            <div class="form-group">
+                <label  for="fileUpload">Photo </label>
+               
+                    <input type="file" accept="image/*" id="fileUpload" name="fileUpload" class="form-control input-md">
+                
+            </div>
+            
+             <div class="form-group">
+                    <label >Description</label>
+                    <textarea class="form-control" type="text" id="Description" placeholder="Street and other details..." name="Description" rows="4" cols="50" required></textarea>
+                </div>
+                   </div>
+            <br>
+            <hr/>
+            
+              <div class="col-md-6">
+            <h3 class="card-title">User Account</h3>
+              <div class="form-group">
+                    <label >User Name</label>
+                  
+                    <input class="form-control" type="text" id="UserName" name="UserName" minlength="8" required/>
+               
+               </div> 
+                
+                <div class="form-group">
+                    <label >Password </label>
+               
+                    <input class="form-control" type="Password" id="Password" name="Password" pattern=".{8,}" required title="8 characters" required/>
+              
+               </div>
+                
+                 <div class="form-group">
+                    <label >Retype Password </label>
+                   
+                    <input class="form-control" type="Password" id="Password" name="RetypePassword" required/>
+               
+               </div> 
+
+            <!-- Button -->
+            <div class="form-group">
+                <label  for="singlebutton"></label>
+               
+                    <button type="submit"  class="btn btn-primary btn-lg btn-block text-uppercase" onclick="return ('Your Subsiomison wil send and wait for Approval')">Register</button>
+               
+            </div>
+    </div>
+    
+            </div>
+            </div>
+        </fieldset>
+        
+     </form>
+        </section>
+    </div>
+
+    </div>
+</div>
+
+ 
+
+  
+<!--ROW-->
+</div>
+ @if(TempData["register"] != null)
+    {
+    
+    <script>    
+      function func(nam) {
+        alert(nam);
+    }
+    </script>
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Successfully Registerd..') </script>    
+    }
+    

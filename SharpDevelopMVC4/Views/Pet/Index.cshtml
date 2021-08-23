@@ -1,0 +1,88 @@
+﻿@model List<SharpDevelopMVC4.Models.Pet>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ @if (Request.IsAuthenticated)
+     {
+
+  if(Model == null)
+  {
+  
+   <p>Null</p>
+  }
+        
+    <div class="col-lg-12">
+    <br>
+    <a href="/pet/create" style="" class="btn btn-outline-success btn-lg btn-lg btn-block text-uppercase btn-hover">ADD PET</a>
+	@foreach(var product in Model)
+	{
+	        <div class="card mt-4" style=" background: linear-gradient(to right, #493240, #f09) !important;"
+};">
+	         
+	          <div class="card-body" style="border-size: 2px solid">
+	            <h3 style="font-size:50px;color:white;" class="card-title">@product.PetName</h3>
+	            
+	            <h4 style="font-size:30px;color:white;">@product.Breed, @product.Type</h4>
+	            <hr>
+	            <p style="color:white;" class="card-text"><a style="font-weight:bold;color:white;">Color     </a>: @product.Color</p>
+	            <p style="color:white;"class="card-text"><a style="font-weight:bold;color:white;">Blood Type</a>: @product.Bloodtype</p>
+	            <p style="color:white;"class="card-text"><a style="font-weight:bold;color:white;">Gender    </a>: @product.Gender</p>
+	            <p style="color:white;" class="card-text"><a style="font-weight:bold;color:white;">Birthday  </a>: @product.Bdate</p>
+	            
+	              <a href="/pet/Edit/@product.Id" class="btn btn-warning btn-lg">Edit</a>
+	              <a href="/pet/Delete/@product.Id" class="btn btn-danger btn-lg" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></a>
+	          </div>
+	        </div>
+    }
+    </div>
+    
+    
+    
+    
+    
+     if(TempData["pet"] != null)
+    {
+    
+    <script>    
+       function func(nam) {
+        alert(nam);
+    }
+    </script>
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Added Successfuly..') </script>
+    
+    
+    }
+    
+    
+     if(TempData["edit"] != null)
+    {
+    
+    <script>    
+       function func(nam) {
+        alert(nam);
+    }
+    </script>
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Edit Successfuly..') </script>
+    
+    
+    }
+    
+    
+    
+    if(TempData["deletpet"] != null)
+    {
+    
+    <script>    
+      function func(nam) {
+        alert(nam);
+    }
+    </script>
+	<script src="~/Scripts/YourJsFileWherFuncIsDefined.js"></script>
+	<script>func('Deleted Successfuly..') </script>
+    
+    
+    }
+    }
